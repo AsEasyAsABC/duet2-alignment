@@ -1,0 +1,77 @@
+{
+  "board": {
+    "ip": "192.168.1.100",
+    "password": "",
+    "mock": true,
+    "allow_raw_gcode": false,
+    "bind_host": "127.0.0.1",
+    "port": 5000,
+    "debug": false
+  },
+  "axes": [
+    {
+      "letter": "X",
+      "name": "Зеркало внутри камеры",
+      "current_mA": 1000.0,
+      "speed_mm_min": 600.0,
+      "max_step_mm": 1.0,
+      "allow_absolute": true,
+      "require_homed": true,
+      "has_endstop": false,
+      "steps": [
+        { "plus": 0.01, "minus": 0.01 },
+        { "plus": 0.05, "minus": 0.05 },
+        { "plus": 0.1, "minus": 0.1 },
+        { "plus": 0.25, "minus": 0.25 },
+        { "plus": 0.5, "minus": 0.5 },
+        { "plus": 1.0, "minus": 1.0 }
+      ]
+    },
+    {
+      "letter": "Y",
+      "name": "Диафрагма",
+      "current_mA": 1000.0,
+      "speed_mm_min": 600.0,
+      "max_step_mm": 1.0,
+      "allow_absolute": true,
+      "require_homed": true,
+      "has_endstop": false,
+      "steps": [
+        { "plus": 0.01, "minus": 0.01 },
+        { "plus": 0.05, "minus": 0.05 },
+        { "plus": 0.1, "minus": 0.1 },
+        { "plus": 0.25, "minus": 0.25 },
+        { "plus": 0.5, "minus": 0.5 },
+        { "plus": 1.0, "minus": 1.0 }
+      ]
+    },
+    {
+      "letter": "Z",
+      "name": "Фокус",
+      "current_mA": 1000.0,
+      "speed_mm_min": 600.0,
+      "max_step_mm": 1.0,
+      "allow_absolute": true,
+      "require_homed": true,
+      "has_endstop": false,
+      "steps": [
+        { "plus": 0.01, "minus": 0.01 },
+        { "plus": 0.05, "minus": 0.05 },
+        { "plus": 0.1, "minus": 0.1 },
+        { "plus": 0.25, "minus": 0.25 },
+        { "plus": 0.5, "minus": 0.5 },
+        { "plus": 1.0, "minus": 1.0 }
+      ]
+    }
+  ],
+  "defaults": {
+    "step_mm": 0.1,
+    "feedrate_mm_min": 600.0,
+    "macro_feedrate_mm_min": 600.0,
+    "homing_feedrate_mm_min": 300,
+    "require_homed_before_motion": true,
+    "allow_unverified_homing": false,
+    "confirm_macros": true,
+    "home_position": { "X": 0.0, "Y": 0.0, "Z": 0.0 }
+  }
+}

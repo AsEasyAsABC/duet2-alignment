@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Юстировка — Duet 2 WiFi</title>
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+  <header>
+    <h1>Управление подвижками (Duet 2 WiFi)</h1>
+    <div id="status" class="badge">не подключено</div>
+  </header>
+
+  <main class="wrap">
+    <section class="panel">
+      <h2>Подключение</h2>
+      <div class="row">
+        <label>IP платы <input id="ip" placeholder="192.168.1.100"></label>
+        <label>Пароль <input id="password" type="password" placeholder="пусто"></label>
+      </div>
+      <div class="row">
+        <label class="check"><input id="mock" type="checkbox"> mock-режим (без платы)</label>
+        <button id="btn-connect">Подключиться</button>
+      </div>
+    </section>
+
+    <section class="panel">
+      <h2>Подвижки</h2>
+      <div class="row">
+        <label>Скорость (мм/мин) <input id="feedrate" type="number" value="600"></label>
+      </div>
+      <div id="axes"></div>
+    </section>
+
+    <section class="panel">
+      <h2>Текущие координаты</h2>
+      <button id="btn-popup" class="secondary">Открыть в отдельном окне</button>
+      <div id="position" style="margin-top:12px;">—</div>
+    </section>
+
+    <section class="panel">
+      <h2>Хоуминг и выключение</h2>
+      <div class="row">
+        <button id="btn-home">Вернуть в хоум</button>
+        <button id="btn-shutdown-home" class="secondary">В хоум и выключить</button>
+        <button id="btn-shutdown-keep" class="secondary">Оставить → новый хоум</button>
+      </div>
+      <p class="warning">Оси с концевиком хоумятся физически (G28), оси без концевика — «мягко» в сохранённую позицию. «Оставить → новый хоум» запомнит текущую позицию как новый хоум, а старый сохранит в макрос «предыдущий хоум».</p>
+    </section>
+
+    <section class="panel">
+      <h2>Настройки (config.json)</h2>
+      <div class="row">
+        <label class="check"><input id="sym" type="checkbox" checked> Применить симметрично (для шагов +/−)</label>
+      </div>
+      <div id="settings"></div>
+      <div class="row" style="margin-top:12px;">
+        <button id="btn-apply">Применить (M906/M203)</button>
+        <button id="btn-save" class="secondary">Сохранить в config.json</button>
+      </div>
+    </section>
+
+    <section class="panel">
+      <h2>Макросы</h2>
+      <p class="warning">Макросы сохраняют абсолютные координаты. Перед запуском убедись, что механика отнормирована и выполнен homing.</p>
+      <div class="row">
+        <label>Название <input id="macro-name" placeholder="домашняя позиция"></label>
+        <button id="btn-macro-add">Сохранить текущую позицию</button>
+      </div>
+      <ul id="macros"></ul>
+    </section>
+  </main>
+
+  <div id="toast"></div>
+  <script src="/static/app.js"></script>
+</body>
+</html>

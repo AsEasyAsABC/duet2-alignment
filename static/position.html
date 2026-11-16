@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <title>Координаты</title>
+  <style>
+    body { font-family: system-ui, sans-serif; background: #0f172a; color: #4ade80; padding: 16px; }
+    h2 { font-size: 15px; color: #94a3b8; text-transform: uppercase; letter-spacing: .05em; }
+    .coord { font-size: 30px; margin: 10px 0; font-family: ui-monospace, Consolas, monospace; }
+  </style>
+</head>
+<body>
+  <h2>Текущие координаты</h2>
+  <div id="coords">—</div>
+  <script>
+    async function poll() {
+      try {
+        const r = await fetch('/api/position');
+        const d = await r.json();
+        if (d.ok) {
+          document.getElementById('coords').innerHTML = Object.entries(d.position || {})
+            .map(([k, v]) => `<div class="coord">${k}: ${Number(v).toFixed(3)} мм</div>`)
+            .join('');
+        }
+      } catch (e) { /* ignore */ }
+    }
+    poll();
+    setInterval(poll, 500);
+  </script>
+</body>
+</html>
