@@ -17,10 +17,15 @@
       try {
         const r = await fetch('/api/position');
         const d = await r.json();
-        if (d.ok) {
-          document.getElementById('coords').innerHTML = Object.entries(d.position || {})
-            .map(([k, v]) => `<div class="coord">${k}: ${Number(v).toFixed(3)} мм</div>`)
-            .join('');
+        if (d.ok && !d.stale) {
+          const box = document.getElementById('coords');
+          box.replaceChildren();
+          for (const [k, v] of Object.entries(d.position || {})) {
+            const div = document.createElement('div');
+            div.className = 'coord';
+            div.textContent = k + ': ' + Number(v).toFixed(3) + ' мм';
+            box.appendChild(div);
+          }
         }
       } catch (e) { /* ignore */ }
     }

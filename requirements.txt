@@ -1,2 +1,4 @@
-flask
-requests
+# Python 3.10+
+flask>=2.2,<4
+requests>=2.28,<3
+

@@ -50,10 +50,12 @@ button.secondary { background: #64748b; }
 .step-group button.minus { background: #dc2626; }
 .step-group button.plus { background: #16a34a; }
 .steps-editor { margin-top: 12px; }
-.step-axis { margin-bottom: 12px; }
-.step-row { display: flex; align-items: center; gap: 6px; margin: 3px 0; }
-.step-row span { width: 12px; text-align: center; color: var(--muted); }
-.step-row input { width: 90px; }
+.steps-grid { display: flex; flex-direction: column; gap: 8px; }
+.step-axis-row { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+.step-axis-label { font-weight: 600; min-width: 18px; }
+.step-pair { display: inline-flex; align-items: center; gap: 3px; background: #f8fafc; border: 1px solid var(--border); border-radius: 6px; padding: 3px 6px; }
+.step-pair .sign { color: var(--muted); font-size: 13px; }
+.step-pair input { width: 60px; padding: 5px 6px; }
 table { width: 100%; border-collapse: collapse; font-size: 13px; }
 th, td { text-align: left; padding: 6px 4px; border-bottom: 1px solid var(--border); }
 td input { width: 100%; padding: 6px; }
@@ -61,6 +63,8 @@ td input { width: 100%; padding: 6px; }
 #macros { list-style: none; padding: 0; margin: 0; }
 #macros li { display: flex; align-items: center; justify-content: space-between; padding: 8px 0; border-bottom: 1px solid var(--border); }
 #macros small { color: var(--muted); }
+#macros li.empty { color: var(--muted); font-style: italic; }
+#macros button { padding: 5px 12px; }
 .warning {
   margin: 0 0 12px;
   padding: 10px 12px;

@@ -20,7 +20,7 @@
         <label>Пароль <input id="password" type="password" placeholder="пусто"></label>
       </div>
       <div class="row">
-        <label class="check"><input id="mock" type="checkbox"> mock-режим (без платы)</label>
+        <label class="check"><input id="mock" type="checkbox"> Режим эмуляции (без платы)</label>
         <button id="btn-connect">Подключиться</button>
       </div>
     </section>
@@ -40,19 +40,20 @@
     </section>
 
     <section class="panel">
-      <h2>Хоуминг и выключение</h2>
+      <h2>Возврат в начальную точку и выключение</h2>
       <div class="row">
-        <button id="btn-home">Вернуть в хоум</button>
-        <button id="btn-shutdown-home" class="secondary">В хоум и выключить</button>
-        <button id="btn-shutdown-keep" class="secondary">Оставить → новый хоум</button>
+        <button id="btn-home">Вернуть в начальную точку</button>
+        <button id="btn-set-ref" class="secondary">Задать нулевую точку (G92)</button>
+        <button id="btn-shutdown-home" class="secondary">В начальную точку и выключить</button>
+        <button id="btn-shutdown-keep" class="secondary">Оставить → новая начальная точка</button>
       </div>
-      <p class="warning">Оси с концевиком хоумятся физически (G28), оси без концевика — «мягко» в сохранённую позицию. «Оставить → новый хоум» запомнит текущую позицию как новый хоум, а старый сохранит в макрос «предыдущий хоум».</p>
+      <p class="warning">Оси с концевиком возвращаются в начальную точку командой Home (G28). Оси без концевика не имеют физической начальной точки: кнопка «Задать нулевую точку (G92)» лишь задаёт текущую координату вручную (после перезапуска её нужно задать заново), а «Вернуть в начальную точку» — это переход в сохранённую позицию, а не установление нуля. «Оставить → новая начальная точка» запомнит текущую позицию как новую начальную точку (старая сохранится в макрос «предыдущая начальная точка»).</p>
     </section>
 
     <section class="panel">
       <h2>Настройки (config.json)</h2>
       <div class="row">
-        <label class="check"><input id="sym" type="checkbox" checked> Применить симметрично (для шагов +/−)</label>
+        <label class="check"><input id="sym" type="checkbox" checked> Синхронизировать «−» и «+»</label>
       </div>
       <div id="settings"></div>
       <div class="row" style="margin-top:12px;">
@@ -63,10 +64,10 @@
 
     <section class="panel">
       <h2>Макросы</h2>
-      <p class="warning">Макросы сохраняют абсолютные координаты. Перед запуском убедись, что механика отнормирована и выполнен homing.</p>
+      <p class="warning">Макрос — это сохранённая позиция осей. Чтобы добавить макрос: введите название и нажмите «Сохранить текущие координаты» — запомнятся координаты из блока «Текущие координаты». Затем макрос можно запустить (▶) или удалить (✕). Перед запуском убедитесь, что начальная точка задана корректно.</p>
       <div class="row">
-        <label>Название <input id="macro-name" placeholder="домашняя позиция"></label>
-        <button id="btn-macro-add">Сохранить текущую позицию</button>
+        <label>Название <input id="macro-name" placeholder="например, позиция 1"></label>
+        <button id="btn-macro-add">Сохранить текущие координаты</button>
       </div>
       <ul id="macros"></ul>
     </section>
